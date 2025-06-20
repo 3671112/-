@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="美团机票立减150元优惠券 - 限时领取">
-    <title>美团机票立减150元 | 限时优惠</title>
+    <meta name="description" content="美团海南旅游立减150元优惠券 - 限时领取">
+    <title>美团海南旅游立减150元 | 限时优惠</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -64,7 +64,7 @@
         }
         
         .hero-section {
-            background: linear-gradient(135deg, var(--meituan-yellow) 0%, var(--meituan-orange) 100%);
+            background: linear-gradient(135deg, #00CED1 0%, #20B2AA 50%, var(--meituan-yellow) 100%);
             color: var(--text-primary);
             padding: 40px 24px;
             text-align: center;
@@ -123,7 +123,7 @@
             align-items: center;
             gap: 6px;
             background: rgba(255, 255, 255, 0.9);
-            color: var(--meituan-orange);
+            color: #00CED1;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 14px;
@@ -159,7 +159,7 @@
             position: relative;
             z-index: 2;
             letter-spacing: -2px;
-            color: var(--meituan-orange);
+            color: #FF4500;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
@@ -178,6 +178,26 @@
             display: inline-block;
             position: relative;
             z-index: 2;
+        }
+        
+        .stats-section {
+            background: var(--bg-secondary);
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--gray-4);
+            text-align: center;
+        }
+        
+        .stats-counter {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .stats-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--meituan-orange);
+            margin: 0 4px;
         }
         
         .form-section {
@@ -303,6 +323,67 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
         
+        .fallback-section {
+            display: none;
+            padding: 24px;
+            background: #FFF9E6;
+            border-top: 1px solid var(--gray-4);
+        }
+        
+        .fallback-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--warning-orange);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .fallback-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .copy-link-btn {
+            width: 100%;
+            background: var(--warning-orange);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .copy-link-btn:hover {
+            background: #E8850E;
+            transform: translateY(-1px);
+        }
+        
+        .deeplink-display {
+            background: var(--gray-6);
+            border: 1px solid var(--gray-4);
+            border-radius: 8px;
+            padding: 12px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            color: var(--text-secondary);
+            word-break: break-all;
+            line-height: 1.4;
+            max-height: 80px;
+            overflow-y: auto;
+        }
+        
         .success-section {
             display: none;
             padding: 32px 24px;
@@ -359,6 +440,26 @@
             line-height: 1.6;
         }
         
+        .success-stats {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .success-stats-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .success-stats-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--meituan-orange);
+        }
+        
         .user-info {
             background: var(--gray-6);
             border-radius: var(--border-radius);
@@ -387,67 +488,20 @@
             font-weight: 600;
         }
         
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .open-app-btn {
-            background: linear-gradient(135deg, var(--meituan-green) 0%, var(--success-green) 100%);
-            color: white;
-            padding: 18px;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .open-app-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-heavy);
-        }
-        
-        .copy-link-btn {
-            background: var(--bg-secondary);
-            color: var(--meituan-orange);
-            padding: 16px;
-            border: 2px solid var(--gray-4);
-            border-radius: var(--border-radius);
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .copy-link-btn:hover {
-            background: var(--gray-5);
-            border-color: var(--meituan-orange);
-            transform: translateY(-1px);
-        }
-        
-        .deeplink-display {
-            background: var(--gray-6);
-            border: 1px solid var(--gray-4);
+        .device-info {
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
-            padding: 12px;
+            padding: 12px 16px;
             margin: 16px 0;
-            font-family: 'SF Mono', Monaco, monospace;
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-secondary);
-            word-break: break-all;
-            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .device-info i {
+            color: var(--meituan-orange);
         }
         
         .tips-section {
@@ -539,22 +593,6 @@
             background: var(--error-red);
         }
         
-        .device-info {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin: 16px 0;
-            font-size: 13px;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .device-info i {
-            color: var(--meituan-orange);
-        }
-        
         @media (max-width: 480px) {
             body {
                 padding: 8px;
@@ -632,21 +670,28 @@
                 <span>美团</span>
             </div>
             <div class="coupon-badge">
-                <i class="fas fa-plane"></i>
-                <span>机票专享福利</span>
+                <i class="fas fa-umbrella-beach"></i>
+                <span>海南旅游专享</span>
             </div>
-            <h1 class="hero-title">立减优惠券</h1>
-            <p class="hero-subtitle">预订机票享受超值优惠</p>
+            <h1 class="hero-title">海南旅游优惠券</h1>
+            <p class="hero-subtitle">海南旅游酒店机票专享福利</p>
             <div class="coupon-amount">
                 <span class="currency">¥</span>150
             </div>
-            <div class="coupon-desc">满500元立减150元</div>
+            <div class="coupon-desc">满300元立减150元</div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-counter">
+                已有 <span class="stats-number" id="claimCount">12,856</span> 人领取
+            </div>
         </section>
 
         <!-- Form Section -->
         <section class="form-section" id="formSection">
             <h2 class="form-title">立即领取优惠券</h2>
-            <p class="form-subtitle">输入手机号码即可领取150元机票优惠券<br>无需验证，一键领取</p>
+            <p class="form-subtitle">输入手机号码即可领取150元海南旅游优惠券<br>无需验证，一键领取</p>
             
             <div id="deviceInfo" class="device-info">
                 <i class="fas fa-info-circle"></i>
@@ -682,8 +727,28 @@
                     <span>温馨提示</span>
                 </div>
                 <div class="tips-content">
-                    领取成功后将自动尝试打开美团App，如无法打开请点击"复制链接"按钮，然后在浏览器中粘贴打开
+                    领取成功后将自动尝试打开美团App，如无法打开请复制链接到浏览器中使用
                 </div>
+            </div>
+        </section>
+
+        <!-- Fallback Section -->
+        <section class="fallback-section" id="fallbackSection">
+            <div class="fallback-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>无法自动打开美团App</span>
+            </div>
+            <p class="fallback-desc">
+                请复制下方链接，在手机浏览器（如Safari、Chrome）中粘贴打开，然后选择用美团App打开即可使用优惠券。
+            </p>
+            
+            <button id="copyLinkBtn" class="copy-link-btn">
+                <i class="far fa-copy"></i>
+                复制链接到浏览器打开
+            </button>
+            
+            <div class="deeplink-display" id="deeplinkDisplay">
+                imeituan://www.meituan.com/web?url=https%3A%2F%2Fcube.meituan.com%2Fawp%2Fhfe%2Fblock%2F6615cf8fb5ad15c01cba6ce2f2629e71%2F346674%2Findex.html%3Ftrafficchannel%3DRmDeBdGeFaD_3592876ff339ce3770d6
             </div>
         </section>
 
@@ -695,7 +760,13 @@
                 </div>
             </div>
             <h2 class="success-title">领取成功！</h2>
-            <p class="success-subtitle">恭喜您成功领取150元机票优惠券<br>请前往美团App使用</p>
+            <p class="success-subtitle">恭喜您成功领取150元海南旅游优惠券<br>已为您自动打开美团App</p>
+            
+            <div class="success-stats">
+                <div class="success-stats-text">您是第</div>
+                <div class="success-stats-number" id="userClaimNumber">12,857</div>
+                <div class="success-stats-text">位领取用户</div>
+            </div>
             
             <div class="user-info">
                 <div class="user-info-item">
@@ -708,27 +779,16 @@
                 </div>
                 <div class="user-info-item">
                     <span class="user-info-label">使用条件</span>
-                    <span class="user-info-value">满500元可用</span>
+                    <span class="user-info-value">满300元可用</span>
+                </div>
+                <div class="user-info-item">
+                    <span class="user-info-label">适用范围</span>
+                    <span class="user-info-value">海南旅游产品</span>
                 </div>
                 <div class="user-info-item">
                     <span class="user-info-label">有效期</span>
                     <span class="user-info-value" id="expireDate">30天</span>
                 </div>
-            </div>
-            
-            <div class="action-buttons">
-                <button id="openAppBtn" class="open-app-btn">
-                    <i class="fas fa-external-link-alt"></i>
-                    立即使用优惠券
-                </button>
-                <button id="copyLinkBtn" class="copy-link-btn">
-                    <i class="far fa-copy"></i>
-                    复制链接到浏览器打开
-                </button>
-            </div>
-            
-            <div class="deeplink-display" id="deeplinkDisplay">
-                imeituan://www.meituan.com/web?url=https%3A%2F%2Fcube.meituan.com%2Fawp%2Fhfe%2Fblock%2F6615cf8fb5ad15c01cba6ce2f2629e71%2F346674%2Findex.html%3Ftrafficchannel%3DRmDeBdGeFaD_3592876ff339ce3770d6
             </div>
         </section>
 
@@ -739,10 +799,11 @@
                 使用说明
             </h3>
             <ul class="terms-list">
-                <li>本优惠券仅限美团机票使用，不可提现不可转让</li>
-                <li>单笔订单满500元可使用，每人限领1张</li>
+                <li>本优惠券仅限美团海南旅游产品使用，包括酒店、机票、门票等</li>
+                <li>单笔订单满300元可使用，每人限领1张</li>
                 <li>优惠券有效期为领取后30天，过期自动失效</li>
-                <li>不可与其他优惠券同时使用</li>
+                <li>不可与其他优惠券同时使用，不可提现不可转让</li>
+                <li>适用于海南省内所有旅游产品预订</li>
                 <li>如遇问题请联系美团客服：400-699-9966</li>
                 <li>美团保留活动最终解释权</li>
             </ul>
@@ -758,8 +819,17 @@
         // 配置常量
         const CONFIG = {
             DEEPLINK: 'imeituan://www.meituan.com/web?url=https%3A%2F%2Fcube.meituan.com%2Fawp%2Fhfe%2Fblock%2F6615cf8fb5ad15c01cba6ce2f2629e71%2F346674%2Findex.html%3Ftrafficchannel%3DRmDeBdGeFaD_3592876ff339ce3770d6',
-            FALLBACK_DELAY: 2500,
-            AUTO_OPEN_DELAY: 1000
+            FALLBACK_DELAY: 3000,
+            AUTO_OPEN_DELAY: 1000,
+            INITIAL_CLAIM_COUNT: 12856
+        };
+        
+        // 应用状态
+        let appState = {
+            isSubmitting: false,
+            device: null,
+            claimCount: CONFIG.INITIAL_CLAIM_COUNT,
+            userPhone: ''
         };
         
         // 工具函数
@@ -792,71 +862,4 @@
                 const errorElement = document.getElementById(elementId);
                 const inputElement = document.getElementById(elementId.replace('Error', ''));
                 
-                errorElement.textContent = message;
-                errorElement.style.display = 'block';
-                inputElement.classList.add('error');
-            },
-            
-            // 清除错误信息
-            clearError(elementId) {
-                const errorElement = document.getElementById(elementId);
-                const inputElement = document.getElementById(elementId.replace('Error', ''));
-                
-                errorElement.style.display = 'none';
-                inputElement.classList.remove('error');
-            },
-            
-            // 设备检测
-            detectDevice() {
-                const ua = navigator.userAgent.toLowerCase();
-                const platform = navigator.platform?.toLowerCase() || '';
-                
-                let deviceInfo = {
-                    isIOS: false,
-                    isAndroid: false,
-                    isWeChat: false,
-                    isMiniProgram: false,
-                    name: '未知设备',
-                    canOpenApp: false
-                };
-                
-                // 检测操作系统
-                if (/iphone|ipad|ipod/.test(ua) || /iphone|ipad|ipod/.test(platform)) {
-                    deviceInfo.isIOS = true;
-                    deviceInfo.name = 'iOS设备';
-                    deviceInfo.canOpenApp = true;
-                } else if (/android/.test(ua)) {
-                    deviceInfo.isAndroid = true;
-                    deviceInfo.name = '安卓设备';
-                    deviceInfo.canOpenApp = true;
-                } else {
-                    deviceInfo.name = '桌面设备';
-                }
-                
-                // 检测微信环境
-                if (/micromessenger/.test(ua)) {
-                    deviceInfo.isWeChat = true;
-                    deviceInfo.canOpenApp = false; // 微信内无法直接唤起
-                }
-                
-                // 检测小程序环境
-                if (window.__wxjs_environment === 'miniprogram') {
-                    deviceInfo.isMiniProgram = true;
-                    deviceInfo.canOpenApp = false;
-                }
-                
-                return deviceInfo;
-            },
-            
-            // 复制到剪贴板
-            async copyToClipboard(text) {
-                try {
-                    if (navigator.clipboard && window.isSecureContext) {
-                        await navigator.clipboard.writeText(text);
-                        return true;
-                    } else {
-                        // 降级方案
-                        const textArea = document.createElement('textarea');
-                        textArea.value = text;
-                        textArea.style.position = 'fixed';
-                        textArea.style.opacity = '
+                if (errorElement && inputElement) {
