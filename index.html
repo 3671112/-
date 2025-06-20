@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="美团机票立减150元优惠券 - 限时领取">
+    <title>美团机票立减150元 | 限时优惠</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --meituan-yellow: #FFD100;
+            --meituan-yellow-dark: #E6BC00;
+            --meituan-orange: #FF6A00;
+            --meituan-orange-dark: #E55A00;
+            --meituan-green: #00C896;
+            --meituan-green-dark: #00B386;
+            --success-green: #34C759;
+            --error-red: #FF3B30;
+            --warning-orange: #FF9500;
+            --gray-1: #333333;
+            --gray-2: #666666;
+            --gray-3: #999999;
+            --gray-4: #CCCCCC;
+            --gray-5: #F5F5F5;
+            --gray-6: #FAFAFA;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --text-tertiary: #999999;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #FAFAFA;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
+            --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --border-radius-large: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, var(--meituan-yellow) 0%, var(--meituan-orange) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 16px;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container {
+            max-width: 390px;
+            margin: 0 auto;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-heavy);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--meituan-yellow) 0%, var(--meituan-orange) 100%);
+            color: var(--text-primary);
+            padding: 40px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .meituan-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .meituan-logo i {
+            color: var(--meituan-orange);
+        }
+        
+        .coupon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--meituan-orange);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-light);
+        }
+        
+        .hero-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+            color: var(--text-primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .coupon-amount {
+            font-size: 56px;
+            font-weight: 900;
+            margin: 16px 0;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -2px;
+            color: var(--meituan-orange);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .coupon-amount .currency {
+            font-size: 24px;
+            vertical-align: top;
+            margin-right: 4px;
+        }
+        
+        .coupon-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 16px;
+            border-radius: 16px;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .form-section {
+            padding: 32px 24px;
+        }
+        
+        .form-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .form-subtitle {
+            color: var(--text-tertiary);
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .input-group {
+            margin-bottom: 32px;
+        }
+        
+        .input-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 18px 16px;
+            font-size: 16px;
+            border: 2px solid var(--gray-4);
+            border-radius: var(--border-radius);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: var(--transition);
+            -webkit-appearance: none;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--meituan-yellow);
+            box-shadow: 0 0 0 4px rgba(255, 209, 0, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .form-input.error {
+            border-color: var(--error-red);
+            box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: var(--text-tertiary);
+        }
+        
+        .error-message {
+            color: var(--error-red);
+            font-size: 14px;
+            margin-top: 8px;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--meituan-yellow) 0%, var(--meituan-orange) 100%);
+            color: var(--text-primary);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .submit-btn:disabled {
+            background: var(--gray-4);
+            color: var(--gray-3);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .submit-btn.loading {
+            color: transparent;
+        }
+        
+        .submit-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--text-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .success-section {
+            display: none;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        
+        .success-animation {
+            position: relative;
+            margin: 0 auto 24px;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .success-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--success-green) 0%, var(--meituan-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            box-shadow: var(--shadow-medium);
+            animation: successPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes successPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .success-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .success-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .user-info {
+            background: var(--gray-6);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        .user-info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .user-info-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .user-info-label {
+            color: var(--text-tertiary);
+        }
+        
+        .user-info-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .open-app-btn {
+            background: linear-gradient(135deg, var(--meituan-green) 0%, var(--success-green) 100%);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .open-app-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-heavy);
+        }
+        
+        .copy-link-btn {
+            background: var(--bg-secondary);
+            color: var(--meituan-orange);
+            padding: 16px;
+            border: 2px solid var(--gray-4);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .copy-link-btn:hover {
+            background: var(--gray-5);
+            border-color: var(--meituan-orange);
+            transform: translateY(-1px);
+        }
+        
+        .deeplink-display {
+            background: var(--gray-6);
+            border: 1px solid var(--gray-4);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 16px 0;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            color: var(--text-secondary);
+            word-break: break-all;
+            line-height: 1.4;
+        }
+        
+        .tips-section {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFEFCC 100%);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin: 20px 0;
+            border-left: 4px solid var(--meituan-yellow);
+        }
+        
+        .tips-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--meituan-orange);
+            margin-bottom: 8px;
+        }
+        
+        .tips-content {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .terms-section {
+            padding: 24px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--gray-4);
+        }
+        
+        .terms-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .terms-list {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+        }
+        
+        .terms-list li {
+            margin-bottom: 6px;
+            padding-left: 12px;
+            position: relative;
+        }
+        
+        .terms-list li::before {
+            content: '•';
+            color: var(--meituan-yellow);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .status-toast {
+            position: fixed;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+            opacity: 0;
+            transition: var(--transition);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .status-toast.show {
+            opacity: 1;
+        }
+        
+        .status-toast.success {
+            background: var(--success-green);
+        }
+        
+        .status-toast.error {
+            background: var(--error-red);
+        }
+        
+        .device-info {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 16px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .device-info i {
+            color: var(--meituan-orange);
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+            
+            .container {
+                border-radius: 16px;
+            }
+            
+            .hero-section {
+                padding: 32px 20px;
+            }
+            
+            .form-section {
+                padding: 24px 20px;
+            }
+            
+            .coupon-amount {
+                font-size: 48px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .coupon-amount {
+                font-size: 40px;
+            }
+            
+            .hero-title {
+                font-size: 24px;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 209, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 209, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 209, 0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="meituan-logo">
+                <i class="fas fa-utensils"></i>
+                <span>美团</span>
+            </div>
+            <div class="coupon-badge">
+                <i class="fas fa-plane"></i>
+                <span>机票专享福利</span>
+            </div>
+            <h1 class="hero-title">立减优惠券</h1>
+            <p class="hero-subtitle">预订机票享受超值优惠</p>
+            <div class="coupon-amount">
+                <span class="currency">¥</span>150
+            </div>
+            <div class="coupon-desc">满500元立减150元</div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="form-section" id="formSection">
+            <h2 class="form-title">立即领取优惠券</h2>
+            <p class="form-subtitle">输入手机号码即可领取150元机票优惠券<br>无需验证，一键领取</p>
+            
+            <div id="deviceInfo" class="device-info">
+                <i class="fas fa-info-circle"></i>
+                <span id="deviceText">正在检测设备信息...</span>
+            </div>
+            
+            <form id="couponForm">
+                <div class="input-group">
+                    <label class="input-label" for="phone">
+                        <i class="fas fa-mobile-alt" style="margin-right: 8px; color: var(--meituan-orange);"></i>
+                        手机号码
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        class="form-input" 
+                        placeholder="请输入您的手机号码"
+                        maxlength="11"
+                        required
+                    >
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+                
+                <button type="submit" id="submitBtn" class="submit-btn pulse">
+                    <i class="fas fa-gift"></i>
+                    立即领取优惠券
+                </button>
+            </form>
+            
+            <div class="tips-section">
+                <div class="tips-title">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>温馨提示</span>
+                </div>
+                <div class="tips-content">
+                    领取成功后将自动尝试打开美团App，如无法打开请点击"复制链接"按钮，然后在浏览器中粘贴打开
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Section -->
+        <section class="success-section" id="successSection">
+            <div class="success-animation">
+                <div class="success-circle">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            <h2 class="success-title">领取成功！</h2>
+            <p class="success-subtitle">恭喜您成功领取150元机票优惠券<br>请前往美团App使用</p>
+            
+            <div class="user-info">
+                <div class="user-info-item">
+                    <span class="user-info-label">手机号码</span>
+                    <span class="user-info-value" id="userPhone">--</span>
+                </div>
+                <div class="user-info-item">
+                    <span class="user-info-label">优惠金额</span>
+                    <span class="user-info-value">¥150</span>
+                </div>
+                <div class="user-info-item">
+                    <span class="user-info-label">使用条件</span>
+                    <span class="user-info-value">满500元可用</span>
+                </div>
+                <div class="user-info-item">
+                    <span class="user-info-label">有效期</span>
+                    <span class="user-info-value" id="expireDate">30天</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="openAppBtn" class="open-app-btn">
+                    <i class="fas fa-external-link-alt"></i>
+                    立即使用优惠券
+                </button>
+                <button id="copyLinkBtn" class="copy-link-btn">
+                    <i class="far fa-copy"></i>
+                    复制链接到浏览器打开
+                </button>
+            </div>
+            
+            <div class="deeplink-display" id="deeplinkDisplay">
+                imeituan://www.meituan.com/web?url=https%3A%2F%2Fcube.meituan.com%2Fawp%2Fhfe%2Fblock%2F6615cf8fb5ad15c01cba6ce2f2629e71%2F346674%2Findex.html%3Ftrafficchannel%3DRmDeBdGeFaD_3592876ff339ce3770d6
+            </div>
+        </section>
+
+        <!-- Terms Section -->
+        <section class="terms-section">
+            <h3 class="terms-title">
+                <i class="fas fa-file-alt"></i>
+                使用说明
+            </h3>
+            <ul class="terms-list">
+                <li>本优惠券仅限美团机票使用，不可提现不可转让</li>
+                <li>单笔订单满500元可使用，每人限领1张</li>
+                <li>优惠券有效期为领取后30天，过期自动失效</li>
+                <li>不可与其他优惠券同时使用</li>
+                <li>如遇问题请联系美团客服：400-699-9966</li>
+                <li>美团保留活动最终解释权</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="statusToast" class="status-toast"></div>
+
+    <script>
+        'use strict';
+        
+        // 配置常量
+        const CONFIG = {
+            DEEPLINK: 'imeituan://www.meituan.com/web?url=https%3A%2F%2Fcube.meituan.com%2Fawp%2Fhfe%2Fblock%2F6615cf8fb5ad15c01cba6ce2f2629e71%2F346674%2Findex.html%3Ftrafficchannel%3DRmDeBdGeFaD_3592876ff339ce3770d6',
+            FALLBACK_DELAY: 2500,
+            AUTO_OPEN_DELAY: 1000
+        };
+        
+        // 工具函数
+        const utils = {
+            // 手机号验证
+            validatePhone(phone) {
+                const phoneRegex = /^1[3-9]\d{9}$/;
+                return phoneRegex.test(phone);
+            },
+            
+            // 格式化手机号显示
+            formatPhone(phone) {
+                return phone.replace(/(\d{3})(\d{4})(\d{4})/, '$1****$3');
+            },
+            
+            // 显示Toast消息
+            showToast(message, type = 'success') {
+                const toast = document.getElementById('statusToast');
+                toast.textContent = message;
+                toast.className = `status-toast ${type}`;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            },
+            
+            // 显示错误信息
+            showError(elementId, message) {
+                const errorElement = document.getElementById(elementId);
+                const inputElement = document.getElementById(elementId.replace('Error', ''));
+                
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                inputElement.classList.add('error');
+            },
+            
+            // 清除错误信息
+            clearError(elementId) {
+                const errorElement = document.getElementById(elementId);
+                const inputElement = document.getElementById(elementId.replace('Error', ''));
+                
+                errorElement.style.display = 'none';
+                inputElement.classList.remove('error');
+            },
+            
+            // 设备检测
+            detectDevice() {
+                const ua = navigator.userAgent.toLowerCase();
+                const platform = navigator.platform?.toLowerCase() || '';
+                
+                let deviceInfo = {
+                    isIOS: false,
+                    isAndroid: false,
+                    isWeChat: false,
+                    isMiniProgram: false,
+                    name: '未知设备',
+                    canOpenApp: false
+                };
+                
+                // 检测操作系统
+                if (/iphone|ipad|ipod/.test(ua) || /iphone|ipad|ipod/.test(platform)) {
+                    deviceInfo.isIOS = true;
+                    deviceInfo.name = 'iOS设备';
+                    deviceInfo.canOpenApp = true;
+                } else if (/android/.test(ua)) {
+                    deviceInfo.isAndroid = true;
+                    deviceInfo.name = '安卓设备';
+                    deviceInfo.canOpenApp = true;
+                } else {
+                    deviceInfo.name = '桌面设备';
+                }
+                
+                // 检测微信环境
+                if (/micromessenger/.test(ua)) {
+                    deviceInfo.isWeChat = true;
+                    deviceInfo.canOpenApp = false; // 微信内无法直接唤起
+                }
+                
+                // 检测小程序环境
+                if (window.__wxjs_environment === 'miniprogram') {
+                    deviceInfo.isMiniProgram = true;
+                    deviceInfo.canOpenApp = false;
+                }
+                
+                return deviceInfo;
+            },
+            
+            // 复制到剪贴板
+            async copyToClipboard(text) {
+                try {
+                    if (navigator.clipboard && window.isSecureContext) {
+                        await navigator.clipboard.writeText(text);
+                        return true;
+                    } else {
+                        // 降级方案
+                        const textArea = document.createElement('textarea');
+                        textArea.value = text;
+                        textArea.style.position = 'fixed';
+                        textArea.style.opacity = '
